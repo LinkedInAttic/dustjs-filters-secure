@@ -1,13 +1,22 @@
-var dust = require('dustjs-linkedin'),
-    aStrings = require('../setup/simple-strings'),
+var dust = require('dustjs-linkedin');
+
+var aStrings = require('../setup/simple-strings'),
     aHTMLStrings = require('../setup/simple-html'),
     o = require('../util/object'),
-    oldFilters = o.clone(dust.filters),
-    oldEscapeHtml = oldFilters.h,
+    oldFilters,
+    oldEscapeHtml,
     customEscapeHtml;
 
-require('../../lib/dust-filters-secure');
-customEscapeHtml = dust.filters.h;
+beforeEach(function(){
+  console.log(dust.filters.temp);
+  oldFilters = o.clone(dust.filters);
+  oldEscapeHtml = oldFilters.h;
+  require('../../lib/dust-filters-secure');
+  customEscapeHtml = dust.filters.h;
+});
+afterEach(function(){
+  dust.filters = oldFilters;
+});
 
 describe("dust escapeHtml |h filters works", function() {
   it("should not contain < > or double quotes", function(){

@@ -2,5 +2,6 @@ var dust = require('dustjs-linkedin');
 describe("sanity check that dust is correctly setup", function() {
   it("should be defined", function(){
     expect(dust).not.toBeUndefined();
+    // should.exist(dust);
   });
 });

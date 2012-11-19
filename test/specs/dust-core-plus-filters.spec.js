@@ -1,27 +1,40 @@
 var dust = require('dustjs-linkedin'),
     aStrings = require('../setup/simple-strings'),
     o = require('../util/object'),
-    oldFilters = o.clone(dust.filters),
+    oldFilters,
     newFilters;
 
-require('../../lib/dust-filters-secure');
-newFilters = dust.filters;
+beforeEach(function(){
+  oldFilters = o.clone(dust.filters),
+  require('../../lib/dust-filters-secure');
+  newFilters = dust.filters;
+});
+afterEach(function(){
+  dust.filters = oldFilters;
+});
+
 
 describe("dust core plus filters works", function() {
   it("should have dust and dust filters defined", function(){
+    // should.exist(dust);
+    // dust.filters.should.be.a('object');
     expect(dust).not.toBeUndefined();
     expect(dust.filters).toEqual(jasmine.any(Object));
   });
   it("should have my custom dust filters defined", function(){
-    expect(oldFilters).not.toBe(newFilters);
+    // oldFilters.should.not.equal(newFilters);
+    // (typeof dust.filters.temp).should.equal("function");
+    expect(oldFilters).not.toEqual(newFilters);
     expect(typeof dust.filters.temp).toEqual("function");
     for (var i=0, len=aStrings.length; i<len; i++){
+      // dust.filters.temp(aStrings[i]).should.equal(aStrings[i]);
       expect(dust.filters.temp(aStrings[i])).toEqual(aStrings[i]);
     }
   });
   it("should continue to have the existing filter defined", function(){
     /* this modules does not change the encodeURI filter */
     // console.log(oldFilters, newFilters);
+    // oldFilters.u.should.equal(newFilters.u);
     expect(oldFilters.u).toEqual(newFilters.u);
   });
 });

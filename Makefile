@@ -3,6 +3,7 @@
 #
 test:
 	node node_modules/jasmine-node/bin/jasmine-node  --color --verbose test/specs/ 
+	# node node_modules/mocha/bin/mocha test/specs/ 
 
 #
 # Build dust.js
