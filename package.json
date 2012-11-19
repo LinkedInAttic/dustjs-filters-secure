@@ -1,0 +1,33 @@
+{
+  "name": "dustjs-filters-secure",
+  "version": "0.0.1",
+  "author": "Roman Shafigullin",
+  "description": "Filters extension for dustjs-linkedin package",
+  "contributors": [
+    {
+      "name": "Roman Shafigullin",
+      "email": "rshafigu@linkedin.com"
+    },
+    {
+      "name": "Jimmy Chan",
+      "email":"jchan@linkedin.com"
+    }
+  ],
+  "scripts": {
+    "test" : "node test/server/specRunner.js" 
+  },
+  "main": "./lib/dust-filters-secure",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jimmyhchan/dust-filters-secure.git"
+  },
+  "keywords": ["templates", "views", "helpers", "secure"],
+  "devDependencies": {
+    "jasmine-node"   :  "1.0.x",
+    "dustjs-linkedin":  "1.1.x"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.5"
+  }
+}
