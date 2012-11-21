@@ -1,40 +1,36 @@
-var dust = require('dustjs-linkedin'),
-    aStrings = require('../setup/simple-strings'),
-    o = require('../util/object'),
-    oldFilters,
-    newFilters;
+var aStrings = require('../setup/simple-strings');
 
-beforeEach(function(){
-  oldFilters = o.clone(dust.filters),
-  require('../../lib/dust-filters-secure');
-  newFilters = dust.filters;
-});
-afterEach(function(){
-  dust.filters = oldFilters;
-});
-
+// beforeEach(function(){
+  // oldFilters = o.clone(dust.filters),
+  // require('../../lib/dust-filters-secure');
+  // newFilters = dust.filters;
+// });
+// afterEach(function(){
+// });
 
 describe("dust core plus filters works", function() {
   it("should have dust and dust filters defined", function(){
     // should.exist(dust);
     // dust.filters.should.be.a('object');
     expect(dust).not.toBeUndefined();
-    expect(dust.filters).toEqual(jasmine.any(Object));
+    expect(dustFilters).toEqual(jasmine.any(Object));
   });
   it("should have my custom dust filters defined", function(){
     // oldFilters.should.not.equal(newFilters);
     // (typeof dust.filters.temp).should.equal("function");
-    expect(oldFilters).not.toEqual(newFilters);
-    expect(typeof dust.filters.temp).toEqual("function");
-    for (var i=0, len=aStrings.length; i<len; i++){
+    // expect(oldFilters).not.toEqual(newFilters);
+    expect(typeof dustFilters.temp).toEqual("function");
+    // for (var i=0, len=aStrings.length; i<len; i++){
       // dust.filters.temp(aStrings[i]).should.equal(aStrings[i]);
-      expect(dust.filters.temp(aStrings[i])).toEqual(aStrings[i]);
-    }
+      // expect(dust.filters.temp(aStrings[i])).toEqual(aStrings[i]);
+    // }
   });
   it("should continue to have the existing filter defined", function(){
     /* this modules does not change the encodeURI filter */
-    // console.log(oldFilters, newFilters);
     // oldFilters.u.should.equal(newFilters.u);
-    expect(oldFilters.u).toEqual(newFilters.u);
+    expect(oldFilters.u).toEqual(dustFilters.u);
   });
 });
+//
+// dust.filters = oldFilters;
+// console.log('after testing ' + Object.keys( dust.filters ));

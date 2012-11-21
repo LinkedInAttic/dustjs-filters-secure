@@ -5,14 +5,11 @@ var dust = require('dustjs-linkedin'),
     oldFilters,
     customEscapeJs;
 
-beforeEach(function(){
+// beforeEach(function(){
   oldFilters = o.clone(dust.filters);
   require('../../lib/dust-filters-secure');
   customEscapeJs = dust.filters.j;
-});
-afterEach(function(){
-  dust.filters = oldFilters;
-});
+// });
 
 describe("dust escapeJs |j filters works", function() {
   it("should not contain unescaped backslashes or single quote", function(){
@@ -22,3 +19,7 @@ describe("dust escapeJs |j filters works", function() {
     }
   });
 });
+
+// afterEach(function(){
+  dust.filters = oldFilters;
+// });

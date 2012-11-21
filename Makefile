@@ -2,9 +2,11 @@
 # Run jasmine-test
 #
 test:
-	node node_modules/jasmine-node/bin/jasmine-node  --color --verbose test/specs/ 
+	node test/server/specRunner.js  --color test/specs/ 
 	# node node_modules/mocha/bin/mocha test/specs/ 
 
+test-verbose:
+	node test/server/specRunner.js  --color --verbose test/specs/ 
 #
 # Build dust.js
 #
