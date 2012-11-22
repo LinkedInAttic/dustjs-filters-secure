@@ -1,12 +1,5 @@
 var aStrings = require('../setup/simple-strings');
 
-// beforeEach(function(){
-  // oldFilters = o.clone(dust.filters),
-  // require('../../lib/dust-filters-secure');
-  // newFilters = dust.filters;
-// });
-// afterEach(function(){
-// });
 
 describe("dust core plus filters works", function() {
   it("should have dust and dust filters defined", function(){
@@ -31,6 +24,3 @@ describe("dust core plus filters works", function() {
     expect(oldFilters.u).toEqual(dustFilters.u);
   });
 });
-//
-// dust.filters = oldFilters;
-// console.log('after testing ' + Object.keys( dust.filters ));

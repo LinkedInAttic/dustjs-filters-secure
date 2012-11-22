@@ -1,14 +1,6 @@
 var aStrings = require('../setup/simple-strings'),
     aHTMLStrings = require('../setup/simple-html');
 
-// beforeEach(function(){
-  // oldFilters = o.clone(dust.filters);
-  // oldEscapeHtml = oldFilters.h;
-  // require('../../lib/dust-filters-secure');
-  // console.log('before testing ' + Object.keys(dust.filters));
-  // customEscapeHtml = dust.filters.h;
-// });
-
 describe("dust escapeHtml |h filters works", function() {
   it("should not contain < > or double quotes", function(){
     for (var i=0, len=aHTMLStrings.length; i<len; i++){
@@ -25,7 +17,3 @@ describe("dust escapeHtml |h filters works", function() {
     // }
   });
 });
-// afterEach(function(){
-// dust.filters = oldFilters;
-// console.log('after testing ' + Object.keys( dust.filters ));
-// });
