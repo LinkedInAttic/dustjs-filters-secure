@@ -12,8 +12,8 @@ describe("dust escapeHtml |h filters works", function() {
   });
   it("should be backwards compatible", function(){
     // for (var i=0, len=aHTMLStrings.length; i<len; i++){
-      // console.log(customEscapeHtml(aHTMLStrings[i]), oldEscapeHtml(aHTMLStrings[i]));
-      // expect(customEscapeHtml(aHTMLStrings[i])).toEqual(oldEscapeHtml(aHTMLStrings[i]));
+      // console.log(dustFilters.h(aHTMLStrings[i]), oldFilters.h(aHTMLStrings[i]));
+      // expect(dustFilters.h(aHTMLStrings[i])).toEqual(oldFilters.h(aHTMLStrings[i]));
     // }
   });
 });

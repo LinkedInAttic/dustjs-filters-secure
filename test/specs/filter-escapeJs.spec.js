@@ -5,7 +5,6 @@ var aStrings = require('../setup/simple-strings'),
 describe("dust escapeJs |j filters works", function() {
   it("should not contain unescaped backslashes or single quote", function(){
     for (var i=0, len=aJsStrings.length; i<len; i++){
-      // console.log(aJsSStrings[i]+ ' escaped to be : ';
       expect(customEscapeJs(aJsStrings[i])).not.toMatch('/\'/');
     }
   });
