@@ -1,5 +1,6 @@
 var arrayofJsStrings = [
-  'var a = 12, b ={}, c=\'string here\'',
+  '\' var xss=true;',  //break out of single quotes
+  '" var xss=true;',  //break out of double quotes
   'var d = function{){',
   '};',
   'debugger',
