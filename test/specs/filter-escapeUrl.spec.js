@@ -1,7 +1,9 @@
 var aStrings = require('../setup/simple-strings'),
+    aBadStrings = require('../setup/bad-strings'),
     aUrls = require('../setup/simple-urls'),
+    aBadUrls = require('../setup/bad-urls'),
     customEscapeUrl = dustFilters.url,
-    testStrings = aStrings.concat(aUrls);
+    testStrings = aStrings.concat(aUrls).concat(aBadStrings).concat(aBadUrls);
 
 
 describe('dust escapeUrl |url filters works', function() {

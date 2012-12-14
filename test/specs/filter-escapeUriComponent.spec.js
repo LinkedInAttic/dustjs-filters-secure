@@ -1,10 +1,12 @@
 var aStrings = require('../setup/simple-strings'),
-    customEscapeUri = dustFilters.uc;
+    aBadStrings = require('../setup/bad-strings'),
+    customEscapeUri = dustFilters.uc,
+    testStrings = aStrings.concat(aBadStrings);
 
 describe("dust escapeURIComponent |uc filters works", function() {
   it("should not contain unescaped !, space, star or parens", function(){
-    for (var i=0, len=aStrings.length; i<len; i++){
-      expect(customEscapeUri(aStrings[i])).not.toMatch('/[! ()*]/');
+    for (var i=0, len=testStrings.length; i<len; i++){
+      expect(customEscapeUri(testStrings[i])).not.toMatch('/[! ()*]/');
     }
   });
 });
