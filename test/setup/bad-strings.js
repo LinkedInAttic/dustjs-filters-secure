@@ -5,4 +5,6 @@ var arrayofBadStrings = [
     '\u0000', // non printable utf-8 characters
     ' ' //
     ];
-module.exports = arrayofBadStrings;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = arrayofBadStrings;
+}
