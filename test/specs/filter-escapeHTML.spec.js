@@ -1,3 +1,8 @@
+/*global describe, it, expect*/
+/*
+ * @venus-library Jasmine
+ * @venus-fixture '<div id="hello"></div>'
+ */
 var aStrings = require('../setup/simple-strings'),
     aBadStrings = require('../setup/bad-strings'),
     aHTMLStrings = require('../setup/simple-html'),
