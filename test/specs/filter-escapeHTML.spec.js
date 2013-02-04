@@ -14,15 +14,9 @@ var aStrings = require('../setup/simple-strings'),
     // testStrings = aHTMLStrings.concat(aBadHTMLStrings);
 
     */
-var testStrings = arrayOfBadStrings,
+var testStrings = arrayofBadStrings,
     dustFilters = dust.filters;
-describe('what is the what', function() {
-  it('good times', function() {
-    expect(true).toEqual(true);
-  });
-});
 
-/*
 describe('dust escapeHtml |h filters works', function() {
   it('should return a string', function(){
     var before, after;
@@ -49,6 +43,17 @@ describe('dust escapeHtml |h filters works', function() {
       // console.log(dustFilters.h(testStrings[i]));
     }
   });
+  it('VENUS should not contain < > or double quotes', function(){
+    var output,
+        container = document.getElementById('hello');
+    for (var i=0, len=testStrings.length; i<len; i++){
+      container.innerHTML = '';
+      // output = dustFilters.h(testStrings[i]);
+      output = '<h1></h1>';
+      container.innerHTML = output;
+      expect(container.children.length).toBe(0);
+    }
+  });
   it('should have the custom escapeHtml method', function(){
     expect(oldFilters.h).not.toBe(dustFilters.h);
   });
@@ -59,4 +64,3 @@ describe('dust escapeHtml |h filters works', function() {
     // }
   });
 });
-*/
