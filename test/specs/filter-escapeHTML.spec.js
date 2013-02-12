@@ -63,4 +63,9 @@ describe('dust escapeHtml |h filters works', function() {
       // expect(dustFilters.h(testStrings[i])).toEqual(oldFilters.h(testStrings[i]));
     // }
   });
+  it('should unescape to the original string', function(){
+    for (var i=0, len=testStrings.length; i<len; i++){
+      expect(dust.unescapeHTML(dustFilters.h(testStrings[i]))).toMatch(testStrings[i]);
+    }
+  });
 });
