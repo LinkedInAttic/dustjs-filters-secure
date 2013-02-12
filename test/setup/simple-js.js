@@ -1,4 +1,4 @@
-var arrayofJsStrings = [
+var arrayOfJsStrings = [
   'var a = 12, b ={}, c=\'string here\'',
   'var d = function{){',
   '};',
@@ -7,4 +7,4 @@ var arrayofJsStrings = [
   'eval(\'bad\')',
   'return'
 ];
-module.exports = arrayofJsStrings;
+module.exports = arrayOfJsStrings;
