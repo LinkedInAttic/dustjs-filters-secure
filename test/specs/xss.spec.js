@@ -52,6 +52,7 @@ describe ('HTML encoded strings injected to a DOM', function() {
     // expect Number of dom child nodes to equal 0
   });
 });
+
 describe ('JS encoded strings injected to a DOM', function() {
   // get the array of test strings and create an array of safe strings
   it ('should not have extra JS variables', function() {

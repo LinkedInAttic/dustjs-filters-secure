@@ -1,6 +1,8 @@
 /*
  * @venus-library jasmine
+ * @venus-include ../util/object.js
  * @venus-include ../../node_modules/dustjs-linkedin/dist/dust-full-1.1.1.js
+ * @venus-include ../setup/old-filters.js
  * @venus-include ../../lib/dust-filters-secure.js
  * @venus-include ../setup/simple-strings.js
  * @venus-include ../setup/bad-strings.js
@@ -8,14 +10,6 @@
  * @venus-include ../setup/bad-html.js
  * @venus-fixture xss.fixture.html
  */
-
-/*
-var aStrings = require('../setup/simple-strings'),
-    aBadStrings = require('../setup/bad-strings'),
-    aHTMLStrings = require('../setup/simple-html'),
-    aBadHTMLStrings = require('../setup/bad-html'),
-    testStrings = aStrings.concat(aBadStrings).concat(aHTMLStrings).concat(aBadHTMLStrings);
-*/
 
 var testStrings = arrayOfSimpleStrings.concat(arrayOfBadStrings).concat(arrayOfSimpleHTMLStrings).concat(arrayOfBadHTMLStrings),
     dustFilters = dust.filters;
@@ -44,7 +38,6 @@ describe('Dust\'s escapeHtml |h filter', function() {
   it('should not contain < > or double quotes', function(){
     for (var i=0, len=testStrings.length; i<len; i++){
       expect(dustFilters.h(testStrings[i])).not.toMatch('/[<>"]/');
-      // console.log(dustFilters.h(testStrings[i]));
     }
   });
 
@@ -62,10 +55,10 @@ describe('Dust\'s escapeHtml |h filter', function() {
   });
 
   it('should be backwards compatible', function(){
-    // for (var i=0, len=testStrings.length; i<len; i++){
-    // console.log(dustFilters.h(testStrings[i]), oldFilters.h(testStrings[i]));
-    // expect(dustFilters.h(testStrings[i])).toEqual(oldFilters.h(testStrings[i]));
-    // }
+    for (var i=0, len=testStrings.length; i<len; i++){
+      // console.log(dustFilters.h(testStrings[i]), oldFilters.h(testStrings[i]));
+      expect(dustFilters.h(testStrings[i])).toEqual(oldFilters.h(testStrings[i]));
+    }
   });
 
   it('should unescape to the original string', function(){
