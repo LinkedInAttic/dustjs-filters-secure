@@ -23,8 +23,7 @@
   },
   "keywords": ["templates", "views", "helpers", "secure"],
   "devDependencies": {
-    /* "mocha"   :  "*", */
-    /* "should"   :  "*", */
+    "phantomjs"   :  "*", 
     "jasmine-node"   :  "1.0.x",
     "dustjs-linkedin":  "1.1.x"
   },
