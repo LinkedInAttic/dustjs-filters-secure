@@ -6,6 +6,7 @@
  * @venus-include ../../lib/dust-filters-secure.js
  * @venus-include ../setup/simple-strings.js
  * @venus-include ../setup/bad-strings.js
+ * @venus-include ../setup/unrecoverable-strings.js
  * @venus-include ../setup/simple-html.js
  * @venus-include ../setup/bad-html.js
  * @venus-fixture xss.fixture.html
@@ -54,16 +55,21 @@ describe('Dust\'s escapeHtml |h filter', function() {
     expect(oldFilters.h).not.toBe(dustFilters.h);
   });
 
-  it('should be backwards compatible', function(){
-    for (var i=0, len=testStrings.length; i<len; i++){
-      // console.log(dustFilters.h(testStrings[i]), oldFilters.h(testStrings[i]));
-      expect(dustFilters.h(testStrings[i])).toEqual(oldFilters.h(testStrings[i]));
+  // it('should be backwards compatible', function(){
+  //   for (var i=0, len=testStrings.length; i<len; i++){
+  //     expect(dustFilters.h(testStrings[i])).toEqual(oldFilters.h(testStrings[i]));
+  //   }
+  // });
+
+  it('should unescape to the original string', function(){
+    for (var i=0, len=testStrings.length; i<len; i++) {
+      expect(dust.unescapeHTML(dustFilters.h(testStrings[i]))).toEqual(testStrings[i]);
     }
   });
 
-  it('should unescape to the original string', function(){
-    for (var i=0, len=testStrings.length; i<len; i++){
-      expect(dust.unescapeHTML(dustFilters.h(testStrings[i]))).toMatch(testStrings[i]);
+  it('should remove unrecoverable characters', function(){
+    for (var i=0, len=arrayOfUnrecoverableStrings.length; i<len; i++) {
+      expect(dust.unescapeHTML(dustFilters.h(arrayOfUnrecoverableStrings[i]))).not.toEqual(arrayOfUnrecoverableStrings[i]);
     }
   });
 });
