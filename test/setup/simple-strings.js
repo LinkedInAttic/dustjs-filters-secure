@@ -1,2 +1,5 @@
-var arrayofSimpleStrings = [ "abc", "def" ];
-module.exports = arrayofSimpleStrings;
+var arrayOfSimpleStrings = [ "abc", "def" ];
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = arrayOfSimpleStrings;
+}

@@ -10,4 +10,7 @@ var o = {
     return obj;
   }
 };
-module.exports = o;
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = o;
+}
