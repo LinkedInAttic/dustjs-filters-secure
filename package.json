@@ -23,7 +23,7 @@
   },
   "keywords": ["templates", "views", "helpers", "secure"],
   "devDependencies": {
-    "phantomjs"   :  "*", 
+    "venus"   :  "*", 
     "jasmine-node"   :  "1.0.x",
     "dustjs-linkedin":  "1.1.x"
   },

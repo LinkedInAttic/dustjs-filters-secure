@@ -12,6 +12,18 @@
  * @venus-fixture xss.fixture.html
  */
 
+if (typeof module !== 'undefined' && module.exports) {
+  var arrayOfSimpleStrings = require('../setup/simple-strings'),
+    arrayOfBadStrings = require('../setup/bad-strings'),
+    arrayOfSimpleHTMLStrings = require('../setup/simple-html'),
+    arrayOfBadHTMLStrings = require('../setup/bad-html'),
+    arrayOfUnrecoverableStrings = require('../setup/unrecoverable-strings');
+  var dust = require('dustjs-linkedin'),
+      o = require('../util/object'),
+      oldFilters = o.clone(dust.filters);
+      require('../../lib/dust-filters-secure.js');
+}
+
 var testStrings = arrayOfSimpleStrings.concat(arrayOfBadStrings).concat(arrayOfSimpleHTMLStrings).concat(arrayOfBadHTMLStrings),
     dustFilters = dust.filters;
 
@@ -43,11 +55,13 @@ describe('Dust\'s escapeHtml |h filter', function() {
   });
 
   it('should escape html elements', function(){
-    var output,
-        container = document.getElementById('test');
-    for (var i=0, len=testStrings.length; i<len; i++){
-      container.innerHTML = dustFilters.h(testStrings[i]);
-      expect(container.children.length).toBe(0);
+    if (typeof document !== 'undefined') {
+      var output,
+          container = document.getElementById('test');
+      for (var i=0, len=testStrings.length; i<len; i++){
+        container.innerHTML = dustFilters.h(testStrings[i]);
+        expect(container.children.length).toBe(0);
+      }
     }
   });
 

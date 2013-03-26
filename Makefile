@@ -1,9 +1,12 @@
 #
 # Run jasmine-test
 #
-test:
-	node test/server/specRunner.js  --color test/specs/ 
-	# node node_modules/mocha/bin/mocha test/specs/ 
+test-venus:
+	node node_modules/venus/bin/venus run -t test/specs/filter-escapeHTML.spec.js
+
+test-jasmine:
+# node test/server/specRunner.js  --color test/specs/ 
+	node node_modules/jasmine-node/bin/jasmine-node test/specs/filter-escapeHTML.spec.js
 
 test-verbose:
 	node test/server/specRunner.js  --color --verbose test/specs/ 
@@ -44,4 +47,4 @@ release: clean min
 	git tag -a -m "version v${VERSION}" v${VERSION}
 	npm publish
 
-.PHONY: test bench parser
+.PHONY: test-jasmine bench parser
