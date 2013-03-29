@@ -7,4 +7,7 @@ var arrayOfJsStrings = [
   'eval(\'bad\')',
   'return'
 ];
-module.exports = arrayOfJsStrings;
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = arrayOfJsStrings;
+}

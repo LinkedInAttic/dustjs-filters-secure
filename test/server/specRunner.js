@@ -32,10 +32,15 @@ process.argv.forEach(function(arg) {
   }
 });
 
-jasmine.executeSpecsInFolder(path.dirname(__dirname) + '/specs', (function(runner, log) {
-  if (runner.results().failedCount === 0) {
-    return process.exit(0);
-  } else {
-    return process.exit(1);
-  }
-}), isVerbose, showColors);
+jasmine.executeSpecsInFolder({
+  specFolder : path.dirname(__dirname) + '/specs',
+  onComplete : (function(runner, log) {
+                  if (runner.results().failedCount === 0) {
+                    return process.exit(0);
+                  } else {
+                    return process.exit(1);
+                  }
+                }),
+  isVerbose : isVerbose,
+  showColors : showColors
+});

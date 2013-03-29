@@ -4,4 +4,6 @@ var arrayOfSimpleUrls = [
   'http://twitter.com/#!hash', //hashbang
   '//www.google.com' //schemaless urls
 ];
-module.exports = arrayOfSimpleUrls;
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = arrayOfSimpleUrls;
+}

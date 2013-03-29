@@ -1,4 +1,4 @@
-var arrayOfJsStrings = [
+var arrayOfBadJsStrings = [
   '\' var xss=true;',  //break out of single quotes
   '" var xss=true;',  //break out of double quotes
   'var d = function{){',
@@ -8,4 +8,7 @@ var arrayOfJsStrings = [
   'eval(\'bad\')',
   'return'
 ];
-module.exports = arrayOfJsStrings;
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = arrayOfBadJsStrings;
+}
