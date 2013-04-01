@@ -1,15 +1,26 @@
 #
-# Run jasmine-test
+# Run unit tests
 #
-test-venus:
-	node node_modules/venus/bin/venus run -t test/specs/filter-escapeHTML.spec.js
 
-test-jasmine:
-# node test/server/specRunner.js  --color test/specs/ 
-	node node_modules/jasmine-node/bin/jasmine-node test/specs/filter-escapeHTML.spec.js
+* install nodejs 0.6 or greater 
+* install npm
+* install testing dependencies by running in the package directory:
 
-test-verbose:
-	node test/server/specRunner.js  --color --verbose test/specs/ 
+     npm install
+
+# Running tests with venus
+
+* install venus
+
+Then run this command in terminal:
+     venus run -n -t dustjs-filters-secure/test/specs
+
+Venus will print a URL where unit tests are stages. Open that URL in the browser to execute unit tests. Check output in console for the results of the execution.
+
+#Running tests on node server version
+Run this command in the terminal
+     node test/server/specRunner.js
+
 #
 # Build dust.js
 #

@@ -29,7 +29,7 @@ You can also execute unit tests from one of the files, not the entire folder:
      venus run -n -t dustjs-filters-secure/test/specs/dust-core-plus-filters.spec.js
 
 
-Running tests on node server version 
+Running tests on node server version
 ------------------------------------
 
 Run this command in the terminal

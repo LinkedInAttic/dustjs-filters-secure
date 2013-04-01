@@ -13,7 +13,7 @@ describe("dust core plus filters works", function() {
     expect(dust).not.toBeUndefined();
     expect(dust.filters).toEqual(jasmine.any(Object));
   });
-  it("should have all filers that original filters had", function(){
+  it("should have all filters that original dust.filters had", function(){
     for (var filterName in oldFilters){
       expect(dust.filters[filterName]).not.toBeUndefined();
     }

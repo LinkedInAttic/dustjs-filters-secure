@@ -3,6 +3,6 @@ var arrayOfBadUrls = [
   '" foo="bar"' //trying to bust out of an href
 ];
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = arrayOfBadUrls;
 }

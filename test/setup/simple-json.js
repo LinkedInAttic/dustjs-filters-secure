@@ -5,6 +5,6 @@ var arrayOfJsStrings = [
 {unquoted: "<html>here<script>var a = 'string';</script></html>"}
 ];
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = arrayOfJsStrings;
 }
