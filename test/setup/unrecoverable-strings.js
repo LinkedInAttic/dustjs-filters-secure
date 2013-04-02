@@ -3,6 +3,6 @@ var arrayOfUnrecoverableStrings = [
     '~`{}[]\\|/<>\n\t\v' // special symbols
 ];
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = arrayOfUnrecoverableStrings;
 }

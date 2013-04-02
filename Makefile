@@ -1,15 +1,14 @@
 #
-# Run jasmine-test
+# Run unit tests with jasmine-node and venus
 #
 test-venus:
-	node node_modules/venus/bin/venus run -t test/specs/filter-escapeHTML.spec.js
+	node_modules/venus/bin/venus run -n -t test/specs
 
 test-jasmine:
-# node test/server/specRunner.js  --color test/specs/ 
-	node node_modules/jasmine-node/bin/jasmine-node test/specs/filter-escapeHTML.spec.js
+	node test/server/specRunner.js
 
 test-verbose:
-	node test/server/specRunner.js  --color --verbose test/specs/ 
+	node test/server/specRunner.js  --color --verbose
 #
 # Build dust.js
 #
@@ -23,6 +22,7 @@ FILTERS = dist/dust-filters-secure-${VERSION}.js
 
 
 define HEADER
+
 //
 // Dust-filters-secure - Additional functionality for dustjs-linkedin package v${VERSION}
 //
