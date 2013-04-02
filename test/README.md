@@ -35,3 +35,22 @@ Running tests on node server version
 Run this command in the terminal
 
      node test/server/specRunner.js
+
+
+Running tests with make
+-----------------------
+
+In root directory of the project to run 
+
+* venus tests
+
+     make test-venus
+
+* unit tests in jasmine-node
+
+     make test-jasmine
+
+* verbose unit tests in jasmine-node
+
+     make test-verbose
+

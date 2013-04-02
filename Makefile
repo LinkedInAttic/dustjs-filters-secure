@@ -1,26 +1,14 @@
 #
-# Run unit tests
+# Run unit tests with jasmine-node and venus
 #
+test-venus:
+	node_modules/venus/bin/venus run -n -t test/specs
 
-* install nodejs 0.6 or greater 
-* install npm
-* install testing dependencies by running in the package directory:
+test-jasmine:
+	node test/server/specRunner.js
 
-     npm install
-
-# Running tests with venus
-
-* install venus
-
-Then run this command in terminal:
-     venus run -n -t dustjs-filters-secure/test/specs
-
-Venus will print a URL where unit tests are stages. Open that URL in the browser to execute unit tests. Check output in console for the results of the execution.
-
-#Running tests on node server version
-Run this command in the terminal
-     node test/server/specRunner.js
-
+test-verbose:
+	node test/server/specRunner.js  --color --verbose
 #
 # Build dust.js
 #
@@ -34,12 +22,13 @@ FILTERS = dist/dust-filters-secure-${VERSION}.js
 
 
 define HEADER
-//
-// Dust-filters-secure - Additional functionality for dustjs-linkedin package v${VERSION}
-//
-// Copyright (c) 2012, LinkedIn
-// Released under the MIT License.
-//
+
+#
+# Dust-filters-secure - Additional functionality for dustjs-linkedin package v${VERSION}
+#
+# Copyright (c) 2012, LinkedIn
+# Released under the MIT License.
+#
 
 endef
 
