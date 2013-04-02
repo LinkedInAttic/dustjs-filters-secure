@@ -23,12 +23,12 @@ FILTERS = dist/dust-filters-secure-${VERSION}.js
 
 define HEADER
 
-#
-# Dust-filters-secure - Additional functionality for dustjs-linkedin package v${VERSION}
-#
-# Copyright (c) 2012, LinkedIn
-# Released under the MIT License.
-#
+//
+// Dust-filters-secure - Additional functionality for dustjs-linkedin package v${VERSION}
+//
+// Copyright (c) 2012, LinkedIn
+// Released under the MIT License.
+//
 
 endef
 
