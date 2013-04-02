@@ -4,4 +4,7 @@ var arrayOfJsStrings = [
 {"hyphen-ated": [1,2,3]},
 {unquoted: "<html>here<script>var a = 'string';</script></html>"}
 ];
-module.exports = arrayOfJsStrings;
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = arrayOfJsStrings;
+}

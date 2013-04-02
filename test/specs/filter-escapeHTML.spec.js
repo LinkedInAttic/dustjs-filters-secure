@@ -12,20 +12,29 @@
  * @venus-fixture xss.fixture.html
  */
 
+  var arrayOfSimpleStrings,
+      arrayOfBadStrings,
+      arrayOfSimpleHTMLStrings,
+      arrayOfBadHTMLStrings,
+      arrayOfUnrecoverableStrings,
+      testStrings;
+
 if (typeof module !== 'undefined' && module.exports) {
-  var arrayOfSimpleStrings = require('../setup/simple-strings'),
-    arrayOfBadStrings = require('../setup/bad-strings'),
-    arrayOfSimpleHTMLStrings = require('../setup/simple-html'),
-    arrayOfBadHTMLStrings = require('../setup/bad-html'),
-    arrayOfUnrecoverableStrings = require('../setup/unrecoverable-strings');
-  var dust = require('dustjs-linkedin'),
-      o = require('../util/object'),
-      oldFilters = o.clone(dust.filters);
-      require('../../lib/dust-filters-secure.js');
+  arrayOfSimpleStrings = require('../setup/simple-strings');
+  arrayOfBadStrings = require('../setup/bad-strings');
+  arrayOfSimpleHTMLStrings = require('../setup/simple-html');
+  arrayOfBadHTMLStrings = require('../setup/bad-html');
+  arrayOfUnrecoverableStrings = require('../setup/unrecoverable-strings');
 }
 
-var testStrings = arrayOfSimpleStrings.concat(arrayOfBadStrings).concat(arrayOfSimpleHTMLStrings).concat(arrayOfBadHTMLStrings),
-    dustFilters = dust.filters;
+  testStrings = arrayOfSimpleStrings
+                   .concat(arrayOfBadStrings)
+                   .concat(arrayOfSimpleHTMLStrings)
+                   .concat(arrayOfBadHTMLStrings);
+
+if (typeof module == 'undefined'){
+  dustFilters = dust.filters;
+}
 
 describe('Dust\'s escapeHtml |h filter', function() {
 
@@ -64,16 +73,6 @@ describe('Dust\'s escapeHtml |h filter', function() {
       }
     }
   });
-
-  it('should have the custom escapeHtml method', function(){
-    expect(oldFilters.h).not.toBe(dustFilters.h);
-  });
-
-  // it('should be backwards compatible', function(){
-  //   for (var i=0, len=testStrings.length; i<len; i++){
-  //     expect(dustFilters.h(testStrings[i])).toEqual(oldFilters.h(testStrings[i]));
-  //   }
-  // });
 
   it('should unescape to the original string', function(){
     for (var i=0, len=testStrings.length; i<len; i++) {

@@ -3,6 +3,6 @@ var arrayOfSimpleHTMLStrings = [
   '<script type="text/javascript"> var a = 123, path = \'/location/path.url\';</script>' 
 ];
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = arrayOfSimpleHTMLStrings;
 }
