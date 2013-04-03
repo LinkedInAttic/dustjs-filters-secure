@@ -61,7 +61,7 @@ var contextTests = [
                   return false;//fail <script id='test_script' must exist
                 }
               },
-    message: "Should JavaScript and html encode data in JavaScript variables that are then inserted into dom"
+    message: "Should JavaScript encode data used in JavaScript"
   }
 ];
 
