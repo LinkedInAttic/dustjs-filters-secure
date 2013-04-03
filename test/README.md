@@ -29,12 +29,16 @@ You can also execute unit tests from one of the files, not the entire folder:
      venus run -n -t dustjs-filters-secure/test/specs/dust-core-plus-filters.spec.js
 
 
-Running tests on node server version
+Running jasmine tests
 ------------------------------------
 
-Run this command in the terminal
+To run unit tests with jasmine-node run this command in the terminal:
 
      node test/server/specRunner.js
+
+If you want to run the client version just open the html page called specRunner.html located in:
+ 
+     test/client/specRunner.html
 
 
 Running tests with make
