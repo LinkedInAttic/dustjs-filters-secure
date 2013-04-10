@@ -14,23 +14,25 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 //run this for browser version only - when we have document object
-if(typeof document != 'undefined'){
+if(typeof document !== 'undefined'){
   describe ("Test dust filters in various contexts", function() {
     for (var i = 0; i < contextTests.length; i++) {
       var test = contextTests[i];
-      it (test.message, render(test));
+      for (var j = 0; j < test.data.length; j++) {
+        it (test.message, render(test, test.data[j]));
+      }
     }
   });
 }
 
-function render(test) {
+function render(test, datum) {
   return function() {
     try {
-      dust.loadSource(dust.compile(test.source, test.name, test.strip));
-      dust.render(test.name, test.context, function(err, output) {
+      dust.loadSource(dust.compile(test.template, test.name, false));
+      dust.render(test.name, datum.context, function(err, output) {
         expect(err).toBeNull();
         document.body.innerHTML=output;
-        expect(test.expected(document)).toEqual(true);
+        expect(datum.expected(document)).toEqual(true);
       });
     }
     catch (error) {

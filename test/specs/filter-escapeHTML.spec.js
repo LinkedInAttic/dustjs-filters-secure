@@ -47,6 +47,15 @@ describe('Dust\'s escapeHtml |h filter', function() {
     }
   });
 
+  it('should return a null when has null input', function(){
+      expect(dustFilters.h(null)).toEqual(null);
+  });
+
+  it('should return a string when input is number of boolean', function(){
+    expect(typeof dustFilters.h(5)).toEqual('string');
+    expect(typeof dustFilters.h(true)).toEqual('string');
+  });
+
   it('should return a string that is around the same length or greater than the original', function(){
     var before, after;
     for (var i=0, len=testStrings.length; i<len; i++){
@@ -85,4 +94,18 @@ describe('Dust\'s escapeHtml |h filter', function() {
       expect(dust.unescapeHTML(dustFilters.h(arrayOfUnrecoverableStrings[i]))).not.toEqual(arrayOfUnrecoverableStrings[i]);
     }
   });
+
+  it('unescape should return null when undefinded input', function(){
+    var string;
+    expect(dust.unescapeHTML(string)).toEqual(null);
+
+    string= null;
+    expect(dust.unescapeHTML(string)).toEqual(null);
+  });
+
+  it('unescape should return string when number of boolean input', function(){
+    expect(typeof dust.unescapeHTML(5)).toEqual("string");
+    expect(typeof dust.unescapeHTML(true)).toEqual("string");
+  });
+
 });
