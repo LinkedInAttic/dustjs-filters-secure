@@ -8,46 +8,35 @@
  * @venus-fixture xss.fixture.html
  */
 
-/* encode with escapeHTML look for 
- *  1. extra tags on the page
- *  2. broken script tags
- */
-
-var testDoms,
-    customJSONStringify = dust.filters.js;
-
+var contextTests;
 if (typeof module !== 'undefined' && module.exports) {
-  testDoms = require('../setup/simple-json');
+  contextTests = require('../setup/xss-test-doms');
 }
 
-describe ('HTML encoded strings injected to a DOM', function() {
-  it ('should not have new nodes', function() {
-/*
-    var container = document.getElementById('test');
-    for (var i=0, len=testDoms.length; i<len; i++){
-        container.innerHTML = dust.filters.h(testDoms[i].markup);
-        expect(testDoms[i].check(document)).toBe(true);
+//run this for browser version only - when we have document object
+if(typeof document !== 'undefined'){
+  describe ("Test dust filters in various contexts", function() {
+    for (var i = 0; i < contextTests.length; i++) {
+      var test = contextTests[i];
+      for (var j = 0; j < test.data.length; j++) {
+        it (test.message, render(test, test.data[j]));
+      }
     }
-*/
   });
-  it ('should not be double encoded', function() {
-    // expect Number of dom child nodes to equal 0
-  });
-});
+}
 
-describe ('JS encoded strings injected to a DOM', function() {
-  // get the array of test strings and create an array of safe strings
-  it ('should not have extra JS variables', function() {
-    // expect Number of dom child nodes to equal 0
-  });
-  it ('should not be double encoded', function() {
-    // expect Number of dom child nodes to equal 0
-  });
-});
-
-// for (var i, len=aTestStrings.length; i<len; i++) {
-//   // create a DOM
-//
-//   // 
-//   // innerHTML the encode
-// }
+function render(test, datum) {
+  return function() {
+    try {
+      dust.loadSource(dust.compile(test.template, test.name, false));
+      dust.render(test.name, datum.context, function(err, output) {
+        expect(err).toBeNull();
+        document.body.innerHTML=output;
+        expect(datum.expected(document)).toEqual(true);
+      });
+    }
+    catch (error) {
+      expect(test.error || {} ).toEqual(error.message);
+    }
+  };
+}

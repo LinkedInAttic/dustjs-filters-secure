@@ -42,4 +42,12 @@ describe("dust escapeJs |j filter works", function() {
     }
   });
 
+  it('should return a null when has null input', function(){
+      expect(dust.filters.j(null)).toEqual(null);
+  });
+
+  it('should return a string when input is number of boolean', function(){
+    expect(typeof dust.filters.j(5)).toEqual('string');
+    expect(typeof dust.filters.j(true)).toEqual('string');
+  });
 });
