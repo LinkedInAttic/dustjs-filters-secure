@@ -8,8 +8,7 @@
  * @venus-fixture xss.fixture.html
  */
 
-var arrayOfJsStrings,
-    customJSONStringify = dust.filters.js;
+var arrayOfJsStrings;
 
 if (typeof module !== 'undefined' && module.exports) {
   arrayOfJsStrings = require('../setup/simple-json');
@@ -18,7 +17,7 @@ if (typeof module !== 'undefined' && module.exports) {
 describe('dust JSONstringify |js filters works', function() {
   it('should not contain unescaped bunch of stuff', function(){
     for (var i=0, len=arrayOfJsStrings.length; i<len; i++){
-      expect(customJSONStringify(arrayOfJsStrings[i])).not.toMatch(/[\/<>&%\u0000\u2028\u2029*()'=!?`#]/);
+      expect(dust.filters.js(arrayOfJsStrings[i])).not.toMatch(/[\/<>&%\u0000\u2028\u2029*()'=!?`#]/);
     }
   });
 });
