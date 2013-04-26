@@ -70,11 +70,10 @@ describe('Dust\'s escapeHtml |h filter', function() {
 
   it('should escape html elements', function(){
     if (typeof document !== 'undefined') {
-      var output,
-          container = document.getElementById('test');
+      var container = document.getElementById('test');
       for (var i=0, len=testStrings.length; i<len; i++){
         container.innerHTML = dust.filters.h(testStrings[i]);
-        expect(container.children.length).toBe(0);
+        expect(container.firstElementChild).toEqual(null);
       }
     }
   });
