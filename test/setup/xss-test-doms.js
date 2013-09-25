@@ -13,7 +13,7 @@ var contextTests = [
   {
     name:    "HTML encode strings injected into HTML attributes",
     message: "Should html encode strings injected into HTML attributes",
-    template:"<input type='text' name='user-name' value='{user}'>",
+    template:"<input type='text' name='user-name' value='{user|ha|s}'>",
     data: [
       {
         context:  { user: "Bill'><input type='text' name='password'>" },
@@ -36,6 +36,39 @@ var contextTests = [
       }
     ]
   },
+  {
+    name:    "URL encode data injected into URL parameter",
+    message: "Should HTML and URL encode data injected into URL parameter",
+    template:"<a href='http://some.web.site.com/{id|ul|s}'>View user {id}</a>",
+    data: [
+      {
+        context:  { id : "'/><script>alert(1);</script>"},
+        expected: function(doc){return doc.body.getElementsByTagName("script").length == 0;}
+      }
+    ]
+  }, 
+  {
+    name:    "URL component encode data injected into URL parameter value",
+    message: "Should HTML and URL encode data injected into URL parameter",
+    template:"<a href='http://some.web.site.com/{id|ul|s}?name={id|uc|s}'>View user {id}</a>",
+    data: [
+      {
+        context:  { id : "'/><script>alert(1);</script>"},
+        expected: function(doc){return doc.body.getElementsByTagName("script").length == 0;}
+      }
+    ]
+  }, 
+  {
+    name:    "URL encode data injected into URL parameter",
+    message: "Should HTML and URL encode data injected into URL parameter",
+    template:"<a href='{id|ul|s}'>View user {id}</a>",
+    data: [
+      {
+        context:  { id : "'/><script>alert(1);</script>"},
+        expected: function(doc){return doc.body.getElementsByTagName("script").length == 0;}
+      }
+    ]
+  }, 
   {
     name:    "JavaScript and html encode data in JavaScript variables that are then inserted into dom",
     message: "Should JavaScript and html encode data in JavaScript variables that are then inserted into dom",

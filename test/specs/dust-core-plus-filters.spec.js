@@ -18,10 +18,12 @@ describe("dust core plus filters works", function() {
       expect(dust.filters[filterName]).not.toBeUndefined();
     }
   });
-  it("should have enhanced filters h, j, uc, js", function(){
-    expect(oldFilters.h).not.toEqual(dust.filters.h);
+  it("should have enhanced filters ha, j, uc, js, ul, x", function(){
+    expect(oldFilters.ha).not.toEqual(dust.filters.ha);
     expect(oldFilters.j).not.toEqual(dust.filters.j);
     expect(oldFilters.uc).not.toEqual(dust.filters.uc);
     expect(oldFilters.js).not.toEqual(dust.filters.js);
+    expect(oldFilters.ul).not.toEqual(dust.filters.ul);
+    expect(oldFilters.x).not.toEqual(dust.filters.x);
   });
 });
